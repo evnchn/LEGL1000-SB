@@ -2,7 +2,7 @@
 let moduleNumber = document.querySelector('h1').textContent.trim().split(' ')[1];
 
 // 根据模块编号设置CSV文件的URL
-let csvUrl = `https://raw.githubusercontent.com/evnchn/LEGL1000-SB/master/M${moduleNumber}.csv`;
+let csvUrl = `https://raw.githubusercontent.com/shiratsuyudachi/LEGL1000-SB/master/M${moduleNumber}.csv`;
 
 // 定义计算Jaccard相似度的函数
 function jaccardSimilarity(a, b) {
