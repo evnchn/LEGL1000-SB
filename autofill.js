@@ -1,4 +1,4 @@
-// 获取当前模块的编号
+// 获取模块编号
 let moduleNumber = document.querySelector('h1').textContent.trim().split(' ')[1];
 
 // 根据模块编号设置CSV文件的URL
@@ -12,16 +12,19 @@ fetch(csvUrl)
     let allQuestionsText = data.split('\n').map(line => line.split(','));
 
     // 打印第一个问题和答案以进行调试
-    console.log('第一个问题:', allQuestionsText[0][0].split('?')[0]);
+    console.log('第一个问题:', allQuestionsText[0][0]);
     console.log('第一个问题的答案:', allQuestionsText[0][1]);
 
     // 遍历所有问题
     allQuestionsText.forEach(([questionText, answerText]) => {
-      // 将问题文本分割为问号前的部分
-      let questionTextBeforeQuestionMark = questionText.split('?')[0];
+      // 尝试在页面上找到完全匹配的问题
+      let questionElement = Array.from(document.querySelectorAll('.question_text')).find(element => element.textContent.trim() === questionText);
 
-      // 尝试在页面上找到匹配的问题
-      let questionElement = Array.from(document.querySelectorAll('.question_text')).find(element => element.textContent.trim().split('?')[0] === questionTextBeforeQuestionMark);
+      // 如果没有找到完全匹配的问题，再尝试匹配问号前的部分
+      if (!questionElement) {
+        let questionTextBeforeQuestionMark = questionText.split('?')[0];
+        questionElement = Array.from(document.querySelectorAll('.question_text')).find(element => element.textContent.trim().startsWith(questionTextBeforeQuestionMark));
+      }
 
       if (questionElement) {
         // 找到问题后，获取其父元素（问题容器）
@@ -31,7 +34,7 @@ fetch(csvUrl)
         let answerElements = questionContainer.querySelectorAll('.answer_label');
 
         // 打印当前问题框中的问题和所有答案
-        console.log('当前问题:', questionElement.textContent.trim().split('?')[0]);
+        console.log('当前问题:', questionElement.textContent.trim());
         console.log('所有答案:', Array.from(answerElements).map(element => element.textContent.trim()));
 
         // 在答案元素中找到匹配的答案
