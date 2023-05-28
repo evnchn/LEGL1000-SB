@@ -1,5 +1,7 @@
 # LEGL1000 StarBurst
-First in series "Project StarBurst". Question database for LEGL1000. 
+First in series "Project StarBurst". Question database and Autofill script for LEGL1000. 
+This project should extend your life by around half an hour or more.
+We love evn God!
 
 ![StarBurst](https://media.tenor.com/U_Qt6y6AFAYAAAAC/stream-syrex.gif)
 
