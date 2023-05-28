@@ -11,7 +11,7 @@ We love evn God!
 1. install TamperMonkey at you chrome [TamperMonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 2. Click the plugin icon, and click create new script
 3. Copy all content from [fill.user.js](https://github.com/ShiratsuYudachi/LEGL1000-SB/blob/master/fill.uset.js) and paste it to tampermonkey, ctrl-S to save
-4. open canvas and take the quiz, you should see a Start Autofill question
+4. open canvas and take the quiz, you should see a Start Autofill button
 
 ## Usage for end-users - get questions and fill manually
 1. Open CSV (`M1.csv`/`M2.csv`/`M3.csv`) for the module in Microsoft Excel (or your favourite text editor). 
