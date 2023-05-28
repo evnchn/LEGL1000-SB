@@ -65,7 +65,7 @@
             localStorage.setItem('started', 'true');
         });
 
-        let button2 = document.createElement('button2');
+        let button2 = document.createElement('button');
         button2.textContent = 'Fill';
         questionHeader.parentElement.appendChild(button2);
 
