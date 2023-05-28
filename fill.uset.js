@@ -23,8 +23,8 @@
             .then(script => {
                 setTimeout(() => {
                     eval(script);
-                    setTimeout(goToNextQuestion, 2000);
-                }, 2000);
+                    setTimeout(goToNextQuestion, 300);
+                }, 300);
             });
 
     };
@@ -39,6 +39,10 @@
         if (questionIndex < questionList.length - 1) {
             // Go to the next question
             let nextButton = document.querySelector('button.submit_button.next-question.btn-primary');
+            if (nextButton == null) {
+                nextButton = document.querySelector('button.submit_button.next-question.btn-secondary');
+            }
+
             nextButton.click();
 
         } else {
