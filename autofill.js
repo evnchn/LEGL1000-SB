@@ -1,6 +1,13 @@
 // CSV文件的URL
 let csvUrl = 'https://raw.githubusercontent.com/evnchn/LEGL1000-SB/master/M1.csv';
 
+// Jaccard相似度计算函数
+function jaccardSimilarity(a, b) {
+  let intersection = a.filter(value => b.includes(value)).length;
+  let union = new Set([...a, ...b]).size;
+  return intersection / union;
+}
+
 // 使用fetch API获取CSV文件内容
 fetch(csvUrl)
   .then(response => response.text())
@@ -16,9 +23,15 @@ fetch(csvUrl)
     allQuestionsText.forEach(([questionText, answerText]) => {
       // 尝试在页面上找到匹配的问题
       let questionElement = Array.from(document.querySelectorAll('.question_text')).find(element => {
-        // 删除所有HTML标签和额外的空格
-        let cleanedText = element.innerHTML.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-        return cleanedText === questionText;
+        let elementText = element.textContent.trim();
+        let elementWords = elementText.split(' ');
+        let questionWords = questionText.split(' ');
+
+        // 计算Jaccard相似度
+        let similarity = jaccardSimilarity(elementWords, questionWords);
+
+        // 判断是否匹配成功
+        return similarity >= 0.8 && Math.abs(elementText.length - questionText.length) / questionText.length <= 0.2;
       });
 
       if (questionElement) {
