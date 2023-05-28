@@ -4,6 +4,13 @@ let moduleNumber = document.querySelector('h1').textContent.trim().split(' ')[1]
 // 根据模块编号设置CSV文件的URL
 let csvUrl = `https://raw.githubusercontent.com/evnchn/LEGL1000-SB/master/M${moduleNumber}.csv`;
 
+// 定义计算Jaccard相似度的函数
+function jaccardSimilarity(a, b) {
+  let intersection = a.filter(value => b.includes(value)).length;
+  let union = new Set([...a, ...b]).size;
+  return intersection / union;
+}
+
 // 使用fetch API获取CSV文件内容
 fetch(csvUrl)
   .then(response => response.text())
@@ -17,14 +24,14 @@ fetch(csvUrl)
 
     // 遍历所有问题
     allQuestionsText.forEach(([questionText, answerText]) => {
-      // 尝试在页面上找到完全匹配的问题
-      let questionElement = Array.from(document.querySelectorAll('.question_text')).find(element => element.textContent.trim() === questionText);
+      // 将问题文本分割为单词数组
+      let questionWords = questionText.split(' ');
 
-      // 如果没有找到完全匹配的问题，再尝试匹配问号前的部分
-      if (!questionElement) {
-        let questionTextBeforeQuestionMark = questionText.split('?')[0];
-        questionElement = Array.from(document.querySelectorAll('.question_text')).find(element => element.textContent.trim().startsWith(questionTextBeforeQuestionMark));
-      }
+      // 尝试在页面上找到与CSV文件中问题相似度超过80%的问题
+      let questionElement = Array.from(document.querySelectorAll('.question_text')).find(element => {
+        let elementWords = element.textContent.trim().split(' ');
+        return jaccardSimilarity(questionWords, elementWords) >= 0.8;
+      });
 
       if (questionElement) {
         // 找到问题后，获取其父元素（问题容器）
