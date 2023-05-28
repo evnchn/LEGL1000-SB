@@ -1,5 +1,7 @@
 # LEGL1000 StarBurst
-First in series "Project StarBurst". Question database for LEGL1000
+First in series "Project StarBurst". Question database for LEGL1000. 
+
+![StarBurst](https://media.tenor.com/U_Qt6y6AFAYAAAAC/stream-syrex.gif)
 
 ## Usage for end-users
 1. Open CSV for the module in Microsoft Excel (or your favourite text editor). 
