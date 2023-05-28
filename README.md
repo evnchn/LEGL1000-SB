@@ -10,7 +10,7 @@ First in series "Project StarBurst". Question database for LEGL1000.
 3. Copy all content from [fill.user.js](https://github.com/ShiratsuYudachi/LEGL1000-SB/blob/master/fill.uset.js) and paste it to tampermonkey, ctrl-S to save
 4. open canvas and take the quiz, you should see a Start Autofill question
 
-## Usage for end-users - get questions to csv
+## Usage for end-users - get questions and fill manually
 1. Open CSV (`M1.csv`/`M2.csv`/`M3.csv`) for the module in Microsoft Excel (or your favourite text editor). 
 2. Search for the question (commas are ignored in the question or answer). 
 3. The answer is on the same row. 
