@@ -1,5 +1,8 @@
-// CSV文件的URL
-let csvUrl = 'https://raw.githubusercontent.com/evnchn/LEGL1000-SB/master/M1.csv';
+// 获取模块编号
+let moduleNumber = document.querySelector('h1').textContent.trim().split(' ')[1];
+
+// 根据模块编号设置CSV文件的URL
+let csvUrl = `https://raw.githubusercontent.com/evnchn/LEGL1000-SB/master/M${moduleNumber}.csv`;
 
 // 使用fetch API获取CSV文件内容
 fetch(csvUrl)
