@@ -48,13 +48,21 @@ fetch(csvUrl)
         let answerElement = Array.from(answerElements).find(element => element.textContent.trim() === answerText);
 
         if (answerElement) {
-          // 找到答案后，获取其父元素（答案容器）
-          let answerContainer = answerElement.parentElement;
+    // 找到答案后，获取其父元素（答案容器）
+    let answerContainer = answerElement.parentElement;
 
-          // 在答案容器内找到输入元素（单选按钮）并选中它
-          let inputElement = answerContainer.querySelector('.question_input');
-          inputElement.checked = true;
-        }
+    // 在答案容器内找到输入元素（单选按钮）
+    let inputElement = answerContainer.querySelector('.question_input');
+
+    // 创建并触发点击事件
+    let event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+    });
+    inputElement.dispatchEvent(event);
+}
+
       }
     });
   });
