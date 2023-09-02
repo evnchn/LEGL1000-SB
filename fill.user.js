@@ -52,7 +52,7 @@
     };
 
     // Check if the current page contains a question
-    let questionHeader = document.querySelector('.header .question_name');
+    let questionHeader = document.querySelector('.quiz-header');
     if (questionHeader) {
         // Create a button and add it next to the question title
         let button = document.createElement('button');
@@ -63,6 +63,7 @@
         button.addEventListener('click', () => {
             // Start autofilling
             localStorage.setItem('started', 'true');
+            location.reload();
         });
 
         let button2 = document.createElement('button');
@@ -79,6 +80,15 @@
                     eval(script);
                 });
             });
+        });
+
+        
+        let button3 = document.createElement('button');
+
+        button3.textContent = 'Stop now';
+        questionHeader.parentElement.appendChild(button3);
+        button3.addEventListener('click', () => {
+            localStorage.setItem('started', 'false');
         });
 
 

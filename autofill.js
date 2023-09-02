@@ -62,6 +62,12 @@ fetch(csvUrl)
     });
     inputElement.dispatchEvent(event);
 }
+else
+{
+  alert("未找到本题答案");
+  console.log(answerText);
+  console.log(answerElements);
+}
 
       }
     });
